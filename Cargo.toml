@@ -1,16 +1,23 @@
 [package]
 name = "gandi-email"
-version = "0.1.0"
+version = "1.0.0"
 edition = "2021"
+description = "CLI tool for Gandi Email API"
+keywords = ["gandi", "cli", "api"]
+categories = ["command-line-utilities", "api-bindings"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/qt2/gandi-email"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 reqwest = { version = "0.11", features = ["json"] }
 tokio = { version = "1", features = ["full"] }
+serde = { version = "1", features = ["derive"] }
 anyhow = "1"
-dirs = "4"
+
+# For CLI
 clap = { version = "3", features = ["derive"] }
 dialoguer = "0.9"
-serde = { version = "1", features = ["derive"] }
+dirs = "4"
 toml = "0.5"

@@ -15,6 +15,26 @@ CLI tool for Gandi Email API
 cargo install gandi-email
 ```
 
+## Usage
+```
+gandi-email 1.0.0
+CLI tool for Gandi Email API
+
+USAGE:
+    gandi-email <SUBCOMMAND>
+
+OPTIONS:
+    -h, --help       Print help information
+    -V, --version    Print version information
+
+SUBCOMMANDS:
+    alias        Manage aliases
+    config       Set up your config
+    domains      List domains
+    help         Print this message or the help of the given subcommand(s)
+    mailboxes    List mailboxes
+```
+
 ## License
 Dual-licensed under either of the following, at your option:
 

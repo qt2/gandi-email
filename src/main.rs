@@ -1,5 +1,5 @@
 use anyhow::Result;
-use clap::{AppSettings, Parser, Subcommand};
+use clap::{Parser, Subcommand};
 use dialoguer::theme::ColorfulTheme;
 use gandi_email::*;
 use serde::{Deserialize, Serialize};
@@ -85,7 +85,6 @@ enum Commands {
         #[clap(short, long)]
         domain: Option<String>,
     },
-    #[clap(setting(AppSettings::ArgRequiredElseHelp))]
     /// Manage aliases
     Alias {
         #[clap(subcommand)]
@@ -100,14 +99,8 @@ enum Commands {
 #[derive(Subcommand)]
 enum AliasCommands {
     List,
-    #[clap(setting(AppSettings::ArgRequiredElseHelp))]
-    Create {
-        alias: String,
-    },
-    #[clap(setting(AppSettings::ArgRequiredElseHelp))]
-    Delete {
-        alias: String,
-    },
+    Create { alias: String },
+    Delete { alias: String },
 }
 
 #[tokio::main]

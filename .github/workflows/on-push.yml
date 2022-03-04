@@ -1,0 +1,24 @@
+name: on-push
+
+on:
+  - push
+
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: install toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+          override: true
+      - name: cache
+        uses: Swatinem/rust-cache@v1
+      - name: cargo test
+        uses: actions-rs/cargo@v1
+        with:
+          command: test

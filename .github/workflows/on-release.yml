@@ -1,0 +1,44 @@
+name: on-release
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - target: aarch64-apple-darwin
+            binary-ext: ""
+            archive: tgz
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+          target: ${{ matrix.target }}
+          override: true
+      - name: Cache
+        uses: Swatinem/rust-cache@v1
+      - name: Cargo build
+        uses: actions-rs/cargo@v1
+        with:
+          command: build
+          args: --release --target ${{ matrix.target }}
+          use-cross: true
+      - name: Archive (tgz)
+        if: ${{ matrix.archive == 'tgz' }}
+        run: tar -czvf gandi-email-${{ matrix.target }}.tgz target/${{ matrix.target }}/release/gandi-email${{ matrix.binary-ext }}
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: gandi-email-${{ matrix.target }}.tgz
+
+

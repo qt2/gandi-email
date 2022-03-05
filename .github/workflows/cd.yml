@@ -43,12 +43,12 @@ jobs:
           args: --release --target ${{ matrix.target }}
           use-cross: false
       - name: Move binary
-        run: mv target/${{ matrix.target }}/release/$name${{ matrix.binary-ext }} .
+        run: mv target/${{ matrix.target }}/release/${{ env.name }}${{ matrix.binary-ext }} .
       - name: Archive (tgz)
-        run: tar -czvf $name-${{ matrix.target }}.tgz $name${{ matrix.binary-ext }}
+        run: tar -czvf ${{ env.name }}-${{ matrix.target }}.tgz ${{ env.name }}${{ matrix.binary-ext }}
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: $name-${{ matrix.target }}.tgz
+          files: ${{ env.name }}-${{ matrix.target }}.tgz
 
 

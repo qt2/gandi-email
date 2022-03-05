@@ -9,8 +9,8 @@ env:
   name: gandi-email
 
 jobs:
-  test:
-    name: Test
+  release:
+    name: Release
     strategy:
       matrix:
         include:
@@ -23,7 +23,6 @@ jobs:
           - target: x86_64-pc-windows-msvc
             os: windows-latest
             binary-ext: ".exe"
-
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout

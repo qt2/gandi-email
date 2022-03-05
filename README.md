@@ -17,7 +17,7 @@ cargo install gandi-email
 
 ## Usage
 ```
-gandi-email 1.0.0
+gandi-email 1.0.1
 CLI tool for Gandi Email API
 
 USAGE:

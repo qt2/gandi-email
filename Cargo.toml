@@ -1,6 +1,6 @@
 [package]
 name = "gandi-email"
-version = "1.0.0"
+version = "1.0.1"
 edition = "2021"
 description = "CLI tool for Gandi Email API"
 keywords = ["gandi", "cli", "api"]
